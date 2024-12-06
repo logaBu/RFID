@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE androidx.drawerlayout.widget.DrawerLayout [
+        <!ELEMENT androidx.drawerlayout.widget.DrawerLayout (LinearLayout|com.google.android.material.navigation.NavigationView)*>
+        <!ATTLIST androidx.drawerlayout.widget.DrawerLayout
+                xmlns:android CDATA #REQUIRED
+                xmlns:app CDATA #REQUIRED
+                xmlns:tools CDATA #REQUIRED
+                android:id CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:fitsSystemWindows CDATA #REQUIRED
+                tools:openDrawer CDATA #REQUIRED>
+        <!ELEMENT LinearLayout (com.google.android.material.appbar.AppBarLayout|fragment)*>
+        <!ATTLIST LinearLayout
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:orientation CDATA #REQUIRED
+                tools:context CDATA #REQUIRED>
+        <!ELEMENT com.google.android.material.appbar.AppBarLayout (androidx.appcompat.widget.Toolbar)*>
+        <!ATTLIST com.google.android.material.appbar.AppBarLayout
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:theme CDATA #REQUIRED>
+        <!ELEMENT androidx.appcompat.widget.Toolbar (#PCDATA)>
+        <!ATTLIST androidx.appcompat.widget.Toolbar
+                android:id CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:background CDATA #REQUIRED
+                app:popupTheme CDATA #REQUIRED>
+        <!ELEMENT fragment (#PCDATA)>
+        <!ATTLIST fragment
+                android:id CDATA #REQUIRED
+                android:name CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                app:defaultNavHost CDATA #REQUIRED
+                app:layout_constraintBottom_toBottomOf CDATA #REQUIRED
+                app:layout_constraintLeft_toLeftOf CDATA #REQUIRED
+                app:layout_constraintRight_toRightOf CDATA #REQUIRED
+                app:layout_constraintTop_toTopOf CDATA #REQUIRED
+                app:navGraph CDATA #REQUIRED>
+        <!ELEMENT com.google.android.material.navigation.NavigationView (#PCDATA)>
+        <!ATTLIST com.google.android.material.navigation.NavigationView
+                android:id CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:layout_gravity CDATA #REQUIRED
+                android:fitsSystemWindows CDATA #REQUIRED
+                app:headerLayout CDATA #REQUIRED
+                app:menu CDATA #REQUIRED>
+        ]>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.UHFG.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/Theme.UHFG.PopupOverlay"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="com.pda.uhf_g.ui.base.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/mobile_navigation"/>
+    </LinearLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/navigation_menu" />
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
